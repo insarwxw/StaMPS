@@ -164,6 +164,11 @@ clear hgt hgtps hgtsb
 
 laps=load([ps_wd,'/la2.mat']);
 lasb=load([sb_wd,'/la2.mat']);
+
+% replace la with inc for S1 data
+if isempty(laps.la)==1; incps=load([ps_wd,'/inc2.mat']); laps.la=incps.inc; end
+if isempty(lasb.la)==1; incsb=load([sb_wd,'/inc2.mat']); lasb.la=incsb.inc; end
+
 la=lasb;
 la.la=[laps.la(psu_ix,:);la.la];
 la.la=la.la(sort_ix,:);
